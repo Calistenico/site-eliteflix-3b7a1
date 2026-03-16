@@ -1,0 +1,1042 @@
+<!doctype html>
+<html lang="pt-BR"><head>
+    <meta name="vyntrix-project" content="eliteflix-3b7a1">
+    <meta name="vyntrix-version" content="v16">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#000000">
+
+  <!-- SEO -->
+  <title>elite — Filmes, Séries e Canais em Alta Qualidade</title>
+  <meta name="description" content="Assine a UNITV e tenha acesso ilimitado ao melhor do entretenimento: filmes, séries e canais em alta qualidade. Planos mensais com suporte rápido via WhatsApp.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="UNITV — Experiência Premium em Streaming">
+  <meta property="og:description" content="Filmes, séries e canais em alta qualidade. Planos mensais e suporte rápido via WhatsApp.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&amp;family=Cinzel:wght@600;700&amp;display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --red:#b30000;
+      --red2:#7a0000;
+      --black:#050506;
+      --black2:#0b0b0d;
+      --white:#ffffff;
+      --muted:rgba(255,255,255,.75);
+      --gold:#d4af37;
+      --shadow-red: 0 18px 50px rgba(179,0,0,.22);
+      --shadow-gold: 0 18px 50px rgba(212,175,55,.18);
+      --radius: 18px;
+      --container: 1120px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: Montserrat, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 600px at 20% -10%, rgba(179,0,0,.22), transparent 65%),
+                  radial-gradient(900px 500px at 100% 0%, rgba(212,175,55,.10), transparent 55%),
+                  var(--black);
+      color:var(--white);
+      overflow-x:hidden;
+    }
+
+    a{color:inherit; text-decoration:none}
+    img{max-width:100%; display:block}
+    .container{
+      width:min(100%, calc(var(--container) + 40px));
+      margin:0 auto;
+      padding:0 20px;
+    }
+
+    /* Top subtle header */
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(12px);
+      background: linear-gradient(to bottom, rgba(0,0,0,.72), rgba(0,0,0,.35));
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .topbar__inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 0;
+      gap:14px;
+    }
+
+    /* Brand / Logo */
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      letter-spacing:.6px;
+      user-select:none;
+      transition: transform .2s ease;
+    }
+    .brand__logo{
+      width:38px;
+      height:38px;
+      border-radius:12px;
+      object-fit:cover;
+      box-shadow: 0 12px 28px rgba(179,0,0,.35);
+      border: 1px solid rgba(255,255,255,.10);
+    }
+    .brand__name{
+      font-family: Cinzel, serif;
+      font-weight:700;
+      font-size: 18px;
+      line-height:1;
+    }
+    .brand__tag{
+      display:block;
+      font-size:12px;
+      color: var(--muted);
+      font-weight:600;
+      letter-spacing:.3px;
+      margin-top:2px;
+    }
+    .brand:hover{ transform: translateY(-1px); }
+
+    .topbar__cta{
+      display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+    }
+
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:10px 12px;
+      border-radius:999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      color: rgba(255,255,255,.86);
+      font-weight:700;
+      font-size:12px;
+    }
+    .pill b{color:var(--gold)}
+
+    .btn{
+      border:0;
+      cursor:pointer;
+      font-weight:800;
+      letter-spacing:.4px;
+      border-radius: 999px;
+      padding: 12px 16px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease, filter .2s ease;
+      text-transform: uppercase;
+      white-space:nowrap;
+    }
+
+    .btn--primary{
+      background: linear-gradient(135deg, var(--red), #ff1f1f);
+      color: #fff;
+      box-shadow: var(--shadow-red);
+      position:relative;
+      overflow:hidden;
+    }
+    .btn--primary:hover{
+      background: linear-gradient(135deg, var(--gold), #ffdf7a);
+      color:#1a1200;
+      box-shadow: var(--shadow-gold);
+      transform: translateY(-1px);
+      filter: saturate(1.05);
+    }
+    .btn--primary:active{transform: translateY(0px) scale(.99)}
+
+    .btn--pulse{ animation: pulse 2.2s ease-in-out infinite; }
+    @keyframes pulse{
+      0%,100%{transform: translateY(0) scale(1)}
+      50%{transform: translateY(-1px) scale(1.03)}
+    }
+
+    /* Buttons for revenda */
+    .btn--ghost{
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.12);
+      color:#fff;
+      box-shadow: none;
+    }
+    .btn--ghost:hover{
+      border-color: rgba(212,175,55,.45);
+      box-shadow: 0 18px 50px rgba(212,175,55,.14);
+      transform: translateY(-1px);
+    }
+    .btn--gold{
+      background: linear-gradient(135deg, var(--gold), #ffdf7a);
+      color:#1a1200;
+      box-shadow: var(--shadow-gold);
+    }
+    .btn--gold:hover{
+      background: linear-gradient(135deg, var(--red), #ff1f1f);
+      color:#fff;
+      box-shadow: var(--shadow-red);
+    }
+
+    /* Hero */
+    .hero{
+      position:relative;
+      padding: 54px 0 34px;
+      overflow:hidden;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .hero:before{
+      content:"";
+      position:absolute; inset:-1px;
+      background:
+        radial-gradient(900px 520px at 15% 0%, rgba(179,0,0,.35), transparent 60%),
+        radial-gradient(900px 520px at 85% 10%, rgba(212,175,55,.12), transparent 55%),
+        linear-gradient(180deg, rgba(0,0,0,.85), rgba(0,0,0,.95));
+      z-index:-2;
+    }
+    .hero:after{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        linear-gradient(90deg, rgba(179,0,0,.10), transparent 35%, rgba(179,0,0,.08));
+      z-index:-1;
+      pointer-events:none;
+    }
+    .hero__grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:26px;
+      align-items:center;
+    }
+    .hero__kicker{
+      display:inline-flex; align-items:center; gap:10px;
+      padding:10px 12px;
+      border-radius:999px;
+      background: rgba(179,0,0,.16);
+      border: 1px solid rgba(179,0,0,.35);
+      color: rgba(255,255,255,.92);
+      font-weight:800;
+      font-size:12px;
+      letter-spacing:.4px;
+      text-transform: uppercase;
+    }
+    .hero__kicker span{ color: var(--gold); font-weight:900; }
+    .hero h1{
+      margin:14px 0 10px;
+      font-family: Cinzel, serif;
+      font-weight:700;
+      font-size: clamp(28px, 4.2vw, 48px);
+      line-height:1.05;
+      letter-spacing:.2px;
+      text-shadow: 0 12px 40px rgba(0,0,0,.35);
+    }
+    .hero p{
+      margin:0 0 18px;
+      color: rgba(255,255,255,.82);
+      font-size: clamp(14px, 1.8vw, 18px);
+      line-height:1.55;
+      max-width: 56ch;
+    }
+    .hero__actions{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      flex-wrap:wrap;
+      margin-top: 8px;
+    }
+    .hero__note{
+      color: rgba(255,255,255,.70);
+      font-size:12px;
+      line-height:1.45;
+      margin-top: 12px;
+      max-width: 60ch;
+    }
+    .hero__card{
+      border-radius: var(--radius);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: 0 16px 60px rgba(0,0,0,.40);
+      overflow:hidden;
+      position:relative;
+      min-height: 280px;
+    }
+    .hero__card:before{
+      content:"";
+      position:absolute; inset:-1px;
+      background: radial-gradient(520px 300px at 20% 0%, rgba(179,0,0,.22), transparent 60%),
+                  radial-gradient(380px 220px at 100% 20%, rgba(212,175,55,.12), transparent 55%);
+      pointer-events:none;
+      z-index:0;
+    }
+    .hero__cardInner{
+      position:relative;
+      z-index:1;
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+    .statRow{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:10px;
+    }
+    .stat{
+      border-radius: 14px;
+      padding:12px;
+      background: rgba(0,0,0,.35);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    .stat b{
+      display:block;
+      font-size: 18px;
+      letter-spacing:.3px;
+    }
+    .stat span{
+      display:block;
+      margin-top:4px;
+      font-size: 12px;
+      color: rgba(255,255,255,.74);
+      font-weight:600;
+    }
+    .hero__mini{
+      border-radius: 14px;
+      padding:12px;
+      background: rgba(179,0,0,.14);
+      border: 1px solid rgba(179,0,0,.28);
+      color: rgba(255,255,255,.88);
+      font-weight:700;
+      font-size: 13px;
+      line-height:1.4;
+    }
+    .hero__mini b{color:var(--gold)}
+
+    /* Marquee / Carousel */
+    .section{ padding: 34px 0; }
+    .section__title{
+      margin:0 0 14px;
+      font-size: 18px;
+      letter-spacing:.2px;
+      font-weight:900;
+      color: rgba(255,255,255,.92);
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
+    .section__title em{ font-style:normal; color: var(--gold); }
+    .marquee{
+      position:relative;
+      border-radius: var(--radius);
+      overflow:hidden;
+      border: 1px solid rgba(255,255,255,.08);
+      background: linear-gradient(180deg, rgba(255,255,255,.03), rgba(0,0,0,.35));
+    }
+    .marquee:before, .marquee:after{
+      content:"";
+      position:absolute; top:0; bottom:0; width:64px;
+      z-index:2;
+      pointer-events:none;
+    }
+    .marquee:before{
+      left:0;
+      background: linear-gradient(to right, rgba(0,0,0,.95), transparent);
+    }
+    .marquee:after{
+      right:0;
+      background: linear-gradient(to left, rgba(0,0,0,.95), transparent);
+    }
+    .marquee__track{
+      display:flex;
+      gap:14px;
+      padding: 16px;
+      width:max-content;
+      will-change: transform;
+      align-items: center;
+    }
+    .marquee--ltr .marquee__track{ animation: marquee-ltr 46s linear infinite; }
+    .marquee--rtl .marquee__track{ animation: marquee-rtl 46s linear infinite; }
+
+    @keyframes marquee-rtl{ from{transform: translateX(0)} to{transform: translateX(-50%)} }
+    @keyframes marquee-ltr{ from{transform: translateX(-50%)} to{transform: translateX(0)} }
+
+    .poster{
+      width: 140px;
+      aspect-ratio: 2 / 3;
+      border-radius: 14px;
+      overflow:hidden;
+      position:relative;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: 0 12px 30px rgba(0,0,0,.35);
+      transform: translateZ(0);
+    }
+    .poster img{
+      width:100%;
+      height:100%;
+      object-fit: cover;
+      filter: saturate(1.04) contrast(1.02);
+      transform: scale(1);
+      transition: transform .22s ease, filter .22s ease;
+    }
+    .poster:after{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(to top, rgba(0,0,0,.55), transparent 55%);
+      opacity:.6;
+      transition: opacity .22s ease;
+    }
+    .poster:hover{
+      box-shadow: 0 18px 52px rgba(179,0,0,.28);
+      border-color: rgba(179,0,0,.45);
+    }
+    .poster:hover img{
+      transform: scale(1.06);
+      filter: saturate(1.08) contrast(1.06) brightness(.98);
+    }
+    .poster:hover:after{
+      opacity:.78;
+      background: radial-gradient(circle at 30% 20%, rgba(179,0,0,.20), transparent 55%),
+                  linear-gradient(to top, rgba(0,0,0,.68), transparent 50%);
+    }
+
+    .skeleton{
+      animation: shimmer 1.2s infinite linear;
+      background: linear-gradient(90deg, rgba(255,255,255,.05), rgba(255,255,255,.10), rgba(255,255,255,.05));
+      background-size: 220% 100%;
+    }
+    @keyframes shimmer{
+      0%{background-position: 0% 0%}
+      100%{background-position: 220% 0%}
+    }
+
+    /* Benefits */
+    .benefits{
+      background: linear-gradient(180deg, rgba(0,0,0,.75), rgba(0,0,0,.95));
+      border-top: 1px solid rgba(255,255,255,.06);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .benefits__grid{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+      align-items: start;
+    }
+    .benefits h2{
+      margin:0 0 10px;
+      font-size: clamp(22px, 3vw, 34px);
+      font-family: Cinzel, serif;
+      letter-spacing:.2px;
+      line-height:1.1;
+    }
+    .benefits h2 b{color:var(--gold)}
+    .benefits p{
+      margin:0;
+      color: rgba(255,255,255,.78);
+      line-height:1.55;
+      max-width: 60ch;
+    }
+
+    .list{
+      margin:0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:12px;
+    }
+    .li{
+      display:flex;
+      gap:12px;
+      align-items:flex-start;
+      padding: 14px 14px;
+      border-radius: 16px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: rgba(255,255,255,.03);
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+    .li:hover{
+      transform: translateY(-2px);
+      border-color: rgba(179,0,0,.35);
+      box-shadow: 0 18px 50px rgba(179,0,0,.12);
+    }
+    .icon{
+      width: 34px; height:34px;
+      border-radius: 12px;
+      display:grid; place-items:center;
+      background: rgba(179,0,0,.14);
+      border: 1px solid rgba(179,0,0,.28);
+      flex: 0 0 auto;
+      animation: iconPop 1.6s ease-in-out infinite;
+      animation-delay: var(--d, 0s);
+    }
+    .icon svg{width:18px; height:18px; fill: var(--gold)}
+    @keyframes iconPop{
+      0%,100%{transform: scale(1)}
+      50%{transform: scale(1.06)}
+    }
+    .li b{ display:block; font-size: 14px; letter-spacing:.2px; }
+    .li span{
+      display:block;
+      margin-top:4px;
+      font-size: 12px;
+      color: rgba(255,255,255,.70);
+      line-height:1.4;
+      font-weight:600;
+    }
+
+    /* Plans */
+    .plans{
+      background: radial-gradient(900px 520px at 20% 0%, rgba(0,0,0,.45), transparent 60%),
+                  radial-gradient(900px 520px at 90% 20%, rgba(0,0,0,.35), transparent 55%),
+                  linear-gradient(180deg, rgba(122,0,0,.92), rgba(35,0,0,.96));
+      border-top: 1px solid rgba(255,255,255,.06);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .plans__head{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:16px; flex-wrap:wrap;
+      margin-bottom: 14px;
+    }
+    .plans__head h2{
+      margin:0;
+      font-family: Cinzel, serif;
+      font-size: clamp(22px, 3vw, 34px);
+      letter-spacing:.2px;
+      line-height:1.1;
+    }
+    .plans__head p{
+      margin:0;
+      color: rgba(255,255,255,.78);
+      line-height:1.5;
+      max-width: 66ch;
+      font-weight:600;
+      font-size: 13px;
+    }
+    .plans__grid{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .plan{
+      border-radius: var(--radius);
+      background: rgba(0,0,0,.78);
+      border: 1px solid rgba(255,255,255,.10);
+      box-shadow: 0 18px 60px rgba(0,0,0,.45);
+      overflow:hidden;
+      position:relative;
+      transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+      min-height: 320px;
+    }
+    .plan:hover{
+      transform: translateY(-6px);
+      border-color: rgba(212,175,55,.38);
+      box-shadow: 0 22px 70px rgba(212,175,55,.16), 0 22px 70px rgba(179,0,0,.10);
+    }
+    .plan__inner{
+      padding: 18px;
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+      height:100%;
+    }
+    .badge{
+      position:absolute;
+      top:14px; right:14px;
+      padding: 8px 10px;
+      border-radius:999px;
+      font-weight:900;
+      font-size: 11px;
+      letter-spacing:.5px;
+      text-transform: uppercase;
+      background: linear-gradient(135deg, var(--gold), #ffe9a6);
+      color: #1a1200;
+      box-shadow: 0 16px 44px rgba(212,175,55,.18);
+      border: 1px solid rgba(0,0,0,.15);
+    }
+    .plan h3{
+      margin:0;
+      font-size: 16px;
+      font-weight:900;
+      letter-spacing:.2px;
+      text-transform: uppercase;
+    }
+    .price{
+      display:flex;
+      align-items:flex-end;
+      gap:10px;
+      margin-top: 2px;
+    }
+    .price b{
+      font-size: 46px;
+      line-height:1;
+      letter-spacing:.2px;
+      color: #fff;
+    }
+    .price span{
+      font-size: 13px;
+      font-weight:800;
+      color: rgba(255,255,255,.76);
+      margin-bottom: 7px;
+    }
+    .plan__points{
+      margin: 6px 0 0;
+      padding:0;
+      list-style:none;
+      display:grid;
+      gap:8px;
+      color: rgba(255,255,255,.82);
+      font-weight:600;
+      font-size: 13px;
+      line-height:1.35;
+    }
+    .plan__points li{ display:flex; gap:10px; align-items:flex-start; }
+    .dot{
+      width: 10px; height:10px; border-radius:999px;
+      margin-top: 4px;
+      background: rgba(212,175,55,.92);
+      box-shadow: 0 10px 24px rgba(212,175,55,.18);
+      flex:0 0 auto;
+    }
+    .btn--plan{
+      margin-top:auto;
+      width:100%;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--red), #ff1f1f);
+      color:#fff;
+      box-shadow: var(--shadow-red);
+    }
+    .btn--plan:hover{
+      background: linear-gradient(135deg, var(--gold), #ffdf7a);
+      color:#1a1200;
+      box-shadow: var(--shadow-gold);
+      transform: translateY(-1px);
+    }
+
+    /* CTA Revenda section */
+    .reseller{
+      padding: 44px 0;
+      background: radial-gradient(900px 520px at 20% 0%, rgba(212,175,55,.12), transparent 60%),
+                  radial-gradient(900px 520px at 85% 10%, rgba(179,0,0,.18), transparent 55%),
+                  linear-gradient(180deg, rgba(0,0,0,.92), rgba(0,0,0,.98));
+      border-top: 1px solid rgba(255,255,255,.06);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .reseller__box{
+      border-radius: calc(var(--radius) + 6px);
+      border: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.45));
+      box-shadow: 0 18px 70px rgba(0,0,0,.50);
+      padding: 22px;
+    }
+    .reseller__grid{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 16px;
+      align-items:center;
+    }
+    .reseller h2{
+      margin:0;
+      font-family: Cinzel, serif;
+      font-size: clamp(22px, 3vw, 34px);
+      line-height:1.1;
+    }
+    .reseller h2 b{color: var(--gold)}
+    .reseller p{
+      margin:10px 0 0;
+      color: rgba(255,255,255,.78);
+      font-weight:600;
+      line-height:1.55;
+    }
+    .reseller__right{
+      display:flex;
+      flex-direction:column;
+      gap: 10px;
+    }
+    .reseller__actions{
+      display:flex;
+      gap: 10px;
+      flex-wrap:wrap;
+      margin-top: 12px;
+    }
+
+    /* Final CTA */
+    .final{
+      padding: 44px 0 64px;
+      background: radial-gradient(900px 520px at 30% 0%, rgba(179,0,0,.28), transparent 60%),
+                  linear-gradient(180deg, rgba(0,0,0,.92), rgba(0,0,0,.98));
+      position:relative;
+      overflow:hidden;
+    }
+    .final:before{
+      content:"";
+      position:absolute; inset:-1px;
+      background: linear-gradient(90deg, rgba(179,0,0,.18), transparent 55%, rgba(179,0,0,.10));
+      pointer-events:none;
+    }
+    .final__box{
+      border-radius: calc(var(--radius) + 6px);
+      border: 1px solid rgba(255,255,255,.10);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(0,0,0,.45));
+      box-shadow: 0 18px 70px rgba(0,0,0,.50);
+      padding: 22px;
+      position:relative;
+      overflow:hidden;
+    }
+    .final__box:after{
+      content:"";
+      position:absolute; inset:-30%;
+      background: radial-gradient(circle at 20% 20%, rgba(212,175,55,.12), transparent 55%);
+      transform: rotate(15deg);
+      pointer-events:none;
+    }
+    .final__content{
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      gap: 12px;
+      align-items:center;
+      text-align:center;
+      z-index:1;
+    }
+    .final h2{
+      margin:0;
+      font-family: Cinzel, serif;
+      font-size: clamp(24px, 3.4vw, 40px);
+      line-height:1.1;
+      letter-spacing:.2px;
+    }
+    .final h2 b{color:var(--gold)}
+    .final p{
+      margin:0;
+      color: rgba(255,255,255,.78);
+      line-height:1.55;
+      font-weight:600;
+      max-width: 70ch;
+    }
+    .btn--big{
+      padding: 16px 18px;
+      font-size: 14px;
+      border-radius: 16px;
+      min-width: 240px;
+    }
+
+    /* Reveal on scroll */
+    .reveal{
+      opacity:0;
+      transform: translateY(16px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.is-visible{
+      opacity:1;
+      transform: translateY(0);
+    }
+
+    /* Floating WhatsApp */
+    .wa{
+      position:fixed;
+      right: 16px;
+      bottom: 16px;
+      z-index: 60;
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
+      display:grid;
+      place-items:center;
+      background: #25D366;
+      box-shadow: 0 18px 50px rgba(0,0,0,.45);
+      border: 1px solid rgba(255,255,255,.14);
+      transition: transform .2s ease, filter .2s ease;
+      animation: wa-bounce 5s infinite;
+    }
+    .wa:hover{transform: translateY(-2px) scale(1.02); filter:saturate(1.05)}
+    .wa svg{width: 26px; height: 26px; fill:#fff}
+    @keyframes wa-bounce{
+      0%, 78%, 100% { transform: translateY(0); }
+      82% { transform: translateY(-6px); }
+      86% { transform: translateY(0); }
+      90% { transform: translateY(-4px); }
+      94% { transform: translateY(0); }
+    }
+
+    /* Footer */
+    footer{
+      padding: 18px 0 34px;
+      color: rgba(255,255,255,.55);
+      font-size: 12px;
+      line-height:1.5;
+      border-top: 1px solid rgba(255,255,255,.06);
+      background: rgba(0,0,0,.70);
+    }
+    footer b{color: rgba(255,255,255,.74)}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero__grid{grid-template-columns: 1fr; gap:16px}
+      .statRow{grid-template-columns: repeat(3, 1fr)}
+      .plans__grid{grid-template-columns: 1fr; gap:12px}
+      .benefits__grid{grid-template-columns: 1fr}
+      .poster{width: 124px}
+      .reseller__grid{grid-template-columns: 1fr}
+    }
+    @media (max-width: 420px){
+      .poster{width: 110px}
+      .statRow{grid-template-columns: 1fr; }
+    }
+
+    /* Reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      html{scroll-behavior:auto}
+      .btn--pulse, .wa, .marquee__track, .icon{animation:none !important}
+      .reveal{transition:none}
+    }
+  </style>
+<link id="vyn-anim" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"><style id="vyn-gc">section,header,footer,.section{background-color:#00058a!important;}:root{--gold:#d4af37;}.btn,.btn-main,[class*="btn-primary"]{background-color:#d4af37!important;border-color:#d4af37!important;}</style>
+
+
+
+
+
+
+
+
+
+
+
+
+<style id="vyn-color-inject">:root{--gold:#00058a !important;--accent:#00058a !important;--cor-botoes:#d4af37 !important;--red:#00058a !important;--purple:#00058a !important;--p:#00058a !important;}</style>
+</head>
+
+<body class="">
+  <!-- WhatsApp floating -->
+  
+
+  <!-- Top bar -->
+  <div class="topbar">
+    <div class="container">
+      
+    </div>
+  </div>
+
+  <!-- HERO -->
+  
+
+  <!-- MOVIES CAROUSEL -->
+  
+
+  <!-- BENEFITS -->
+  
+
+  <!-- PLANS -->
+  
+
+  <!-- CTA REVENDA -->
+  
+
+  <!-- SERIES CAROUSEL -->
+  
+
+  <!-- FINAL CTA -->
+  
+
+  
+
+  <script>
+    /**
+     * TMDB (v3) - Front-end demo
+     * Observação: expor API key no front-end não é o ideal. Em produção, o recomendado é usar backend/proxy.
+     */
+    const TMDB_KEY = "9049a1d821f51ef88e70e430d10298c5";
+    const TMDB_BASE = "https://api.themoviedb.org/3";
+    const IMG_BASE = "https://image.tmdb.org/t/p/w342";
+    const MAX_POSTERS = 35;
+
+    const moviesTrack = document.getElementById("moviesTrack");
+    const seriesTrack = document.getElementById("seriesTrack");
+
+    function renderSkeleton(track, count = 14){
+      track.innerHTML = "";
+      for(let i=0;i<count;i++){
+        const d = document.createElement("div");
+        d.className = "poster skeleton";
+        track.appendChild(d);
+      }
+    }
+    renderSkeleton(moviesTrack);
+    renderSkeleton(seriesTrack);
+
+    function uniqById(list){
+      const seen = new Set();
+      const out = [];
+      for(const item of list){
+        if(!item || !item.id) continue;
+        if(seen.has(item.id)) continue;
+        seen.add(item.id);
+        out.push(item);
+      }
+      return out;
+    }
+
+    async function tmdbGet(path, params = {}){
+      const url = new URL(TMDB_BASE + path);
+      url.searchParams.set("api_key", TMDB_KEY);
+      url.searchParams.set("language", "pt-BR");
+      url.searchParams.set("region", "BR");
+      for(const [k,v] of Object.entries(params)) url.searchParams.set(k, v);
+      const res = await fetch(url.toString(), { headers: { "accept":"application/json" } });
+      if(!res.ok) throw new Error("TMDB error: " + res.status);
+      return res.json();
+    }
+
+    function makePoster(src, alt){
+      const wrap = document.createElement("div");
+      wrap.className = "poster";
+      const img = document.createElement("img");
+      img.loading = "lazy";
+      img.decoding = "async";
+      img.alt = alt || "Capa";
+      img.src = src;
+      wrap.appendChild(img);
+      return wrap;
+    }
+
+    function fillTrack(track, posters){
+      track.innerHTML = "";
+      const frag = document.createDocumentFragment();
+      posters.forEach(p => frag.appendChild(p));
+      track.appendChild(frag);
+
+      // duplicar para loop infinito suave
+      posters.forEach(p => track.appendChild(p.cloneNode(true)));
+      track.style.minWidth = "200%";
+    }
+
+    function postersFromTmdbResults(results){
+      return results
+        .filter(r => r && r.poster_path)
+        .slice(0, MAX_POSTERS)
+        .map(r => makePoster(IMG_BASE + r.poster_path, r.title || r.name || "Capa"));
+    }
+
+    async function loadMovies(){
+      const [popular, nowPlaying] = await Promise.all([
+        tmdbGet("/movie/popular", { page: 1 }),
+        tmdbGet("/movie/now_playing", { page: 1 })
+      ]);
+      const merged = uniqById([...(popular.results||[]), ...(nowPlaying.results||[])]);
+      fillTrack(moviesTrack, postersFromTmdbResults(merged));
+    }
+
+    async function loadSeries(){
+      const [popular, onAir] = await Promise.all([
+        tmdbGet("/tv/popular", { page: 1 }),
+        tmdbGet("/tv/on_the_air", { page: 1 })
+      ]);
+      const merged = uniqById([...(popular.results||[]), ...(onAir.results||[])]);
+      fillTrack(seriesTrack, postersFromTmdbResults(merged));
+    }
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if(e.isIntersecting){
+          e.target.classList.add("is-visible");
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+
+    // Load carousels
+    const start = async () => {
+      try{ await Promise.all([loadMovies(), loadSeries()]); }
+      catch(err){
+        console.warn(err);
+        moviesTrack.innerHTML = '<div style="padding:14px;color:rgba(255,255,255,.75);font-weight:700">Não foi possível carregar as capas no momento.</div>';
+        seriesTrack.innerHTML = '<div style="padding:14px;color:rgba(255,255,255,.75);font-weight:700">Não foi possível carregar as capas no momento.</div>';
+      }
+    };
+    if ("requestIdleCallback" in window) requestIdleCallback(start, { timeout: 1500 });
+    else window.addEventListener("load", start);
+  </script>
+
+<script id="vyn-bs" src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script><section style="background:linear-gradient(135deg,#0a0a0c,#1a0a00);padding:80px 20px;text-align:center;" class=""><div style="max-width:800px;margin:0 auto;"><p style="color:#D4AF37;font-size:12px;font-weight:800;letter-spacing:2px;text-transform:uppercase;margin-bottom:16px;">⚠️ OFERTA POR TEMPO LIMITADO</p><h1 style="color: rgb(255, 255, 255); font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; margin-bottom: 16px; visibility: visible;" class="animate__animated animate__fadeInLeft" data-anim-class="animate__fadeInLeft">Esta Oferta Encerra em:</h1><div style="display: flex; justify-content: center; gap: 16px; margin: 28px 0px; flex-wrap: wrap; visibility: visible;" class="animate__animated animate__tada" data-anim-class="animate__tada"><div style="background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.3);border-radius:12px;padding:16px 24px;min-width:80px;"><div id="vyn-cd-h" style="font-size:2.5rem;font-weight:800;color:#D4AF37;">02</div><div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:1px;">Horas</div></div><div style="background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.3);border-radius:12px;padding:16px 24px;min-width:80px;"><div id="vyn-cd-m" style="font-size:2.5rem;font-weight:800;color:#D4AF37;">59</div><div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:1px;">Minutos</div></div><div style="background:rgba(212,175,55,.1);border:1px solid rgba(212,175,55,.3);border-radius:12px;padding:16px 24px;min-width:80px;"><div id="vyn-cd-s" style="font-size:2.5rem;font-weight:800;color:#D4AF37;">59</div><div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:1px;">Segundos</div></div></div><a href="#" style="display:inline-block;background:#D4AF37;color:#000;font-weight:800;padding:18px 48px;border-radius:50px;text-decoration:none;font-size:1rem;">GARANTIR MINHA VAGA →</a></div><script>(function(){let t=3*3600;function u(){const h=String(Math.floor(t/3600)).padStart(2,'0');const m=String(Math.floor((t%3600)/60)).padStart(2,'0');const s=String(t%60).padStart(2,'0');const hE=document.getElementById('vyn-cd-h');const mE=document.getElementById('vyn-cd-m');const sE=document.getElementById('vyn-cd-s');if(hE)hE.textContent=h;if(mE)mE.textContent=m;if(sE)sE.textContent=s;if(t>0)t--;}u();setInterval(u,1000);})();</script></section><section style="background:linear-gradient(135deg,#D4AF37,#b5952f);padding:80px 20px;text-align:center;"><div style="max-width:700px;margin:0 auto;"><h2 style="color:#000;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin-bottom:16px;">Pronto para Transformar Seus Resultados?</h2><p style="color:#333;font-size:1.1rem;margin-bottom:32px;">Junte-se a milhares de pessoas que já mudaram suas vidas.</p><a href="#" style="display:inline-block;background:#000;color:#D4AF37;font-weight:800;padding:18px 48px;border-radius:50px;text-decoration:none;font-size:1rem;letter-spacing:.5px;">COMEÇAR AGORA MESMO →</a></div></section><section style="background:#0a0a0c;padding:60px 20px;text-align:center;" class=""><div style="max-width:600px;margin:0 auto;"><div style="background:#111;border:2px solid #D4AF37;border-radius:20px;padding:48px 40px;box-shadow:0 10px 30px rgba(0,0,0,0.5);"><div style="font-size:64px;margin-bottom:16px;">🛡️</div><h2 style="color:#D4AF37;font-size:1.8rem;font-weight:800;margin-bottom:16px;">Garantia de 7 Dias</h2><p style="color:#ccc;font-size:1rem;line-height:1.7;">Se por qualquer motivo você não ficar satisfeito, devolvemos 100% do seu dinheiro. Sem perguntas, sem burocracia.</p><p style="color:#D4AF37;font-weight:700;margin-top:20px;font-size:.9rem;">✓ Risco Zero • ✓ Devolução Imediata • ✓ 100% Garantido</p></div></div></section><div style="background:#D4AF37;padding:12px 20px;text-align:center;position:sticky;top:0;z-index:100;"><p style="color:#000;font-size:.85rem;font-weight:800;margin:0;">🔥 ATENÇÃO: Apenas <strong>7 vagas</strong> restantes! <a href="#" style="color:#000;text-decoration:underline;font-weight:800;">GARANTA AGORA →</a></p></div><section style="background:#0d0d0f;padding:80px 20px;"><div style="max-width:1100px;margin:0 auto;"><h2 style="color:#fff;font-size:2.2rem;font-weight:800;text-align:center;margin-bottom:48px;">O que dizem nossos <span style="color:#D4AF37;">alunos</span></h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;"><div style="background:#111;border:1px solid #1a1a1e;border-radius:16px;padding:32px;"><div style="color:#D4AF37;font-size:1.2rem;margin-bottom:16px;">★★★★★</div><p style="color:#ccc;line-height:1.7;margin-bottom:20px;">"Resultado incrível! Em 30 dias já vi diferença enorme. Recomendo muito!"</p><div style="display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:#D4AF37;display:flex;align-items:center;justify-content:center;font-weight:800;color:#000;font-size:.9rem;">MA</div><div><div style="color:#fff;font-weight:700;font-size:.9rem;">Marcos A.</div><div style="color:#666;font-size:.8rem;">São Paulo, SP</div></div></div></div><div style="background:#111;border:1px solid #1a1a1e;border-radius:16px;padding:32px;"><div style="color:#D4AF37;font-size:1.2rem;margin-bottom:16px;">★★★★★</div><p style="color:#ccc;line-height:1.7;margin-bottom:20px;">"Superou todas as expectativas. Suporte excelente e conteúdo extremamente prático."</p><div style="display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:#D4AF37;display:flex;align-items:center;justify-content:center;font-weight:800;color:#000;font-size:.9rem;">AJ</div><div><div style="color:#fff;font-weight:700;font-size:.9rem;">Ana Julia</div><div style="color:#666;font-size:.8rem;">Rio de Janeiro, RJ</div></div></div></div><div style="background:#111;border:1px solid #1a1a1e;border-radius:16px;padding:32px;"><div style="color:#D4AF37;font-size:1.2rem;margin-bottom:16px;">★★★★★</div><p style="color:#ccc;line-height:1.7;margin-bottom:20px;">"Já testei vários similares e este é sem dúvida o melhor investimento que fiz!"</p><div style="display:flex;align-items:center;gap:12px;"><div style="width:40px;height:40px;border-radius:50%;background:#D4AF37;display:flex;align-items:center;justify-content:center;font-weight:800;color:#000;font-size:.9rem;">RF</div><div><div style="color:#fff;font-weight:700;font-size:.9rem;">Ricardo F.</div><div style="color:#666;font-size:.8rem;">Curitiba, PR</div></div></div></div></div></div></section><section style="background:#0a0a0c;padding:80px 20px;text-align:center;"><div style="max-width:900px;margin:0 auto;"><h2 style="color:#fff;font-size:2.2rem;font-weight:800;margin-bottom:12px;">Veja quem já <span style="color:#D4AF37;">transformou</span> sua vida</h2><p style="color:#888;margin-bottom:40px;">Depoimentos reais de pessoas com resultados extraordinários</p><div class="vyn-video-container" style="position:relative;padding-bottom:56.25%;height:0;border-radius:16px;overflow:hidden;border:1px solid rgba(212,175,55,.3);"><iframe style="position:absolute;top:0;left:0;width:100%;height:100%;" src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allowfullscreen=""></iframe></div></div></section><section style="background:#0d0d0f;padding:40px 20px;border-top:1px solid #1a1a1e;border-bottom:1px solid #1a1a1e;"><div style="max-width:1100px;margin:0 auto;text-align:center;"><p style="color:#555;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:24px;">COMO VISTO EM</p><div style="display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:32px;opacity:.5;"><span style="color:#fff;font-size:1.3rem;font-weight:800;">Forbes</span><span style="color:#fff;font-size:1.3rem;font-weight:800;">EXAME</span><span style="color:#fff;font-size:1.3rem;font-weight:800;">VEJA</span><span style="color:#fff;font-size:1.3rem;font-weight:800;">InfoMoney</span><span style="color:#fff;font-size:1.3rem;font-weight:800;">Endeavor</span></div></div></section><section style="background:#0a0a0c;padding:80px 20px;text-align:center;"><div style="max-width:1000px;margin:0 auto;"><h2 style="color:#fff;font-size:2rem;font-weight:800;margin-bottom:48px;">Números que <span style="color:#D4AF37;">provam</span> nosso resultado</h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:32px;"><div><div style="font-size:3.5rem;font-weight:800;color:#D4AF37;">10k+</div><div style="color:#888;font-size:.95rem;margin-top:8px;">Alunos Ativos</div></div><div><div style="font-size:3.5rem;font-weight:800;color:#D4AF37;">97%</div><div style="color:#888;font-size:.95rem;margin-top:8px;">Satisfação</div></div><div><div style="font-size:3.5rem;font-weight:800;color:#D4AF37;">R$2M+</div><div style="color:#888;font-size:.95rem;margin-top:8px;">Gerados pelos Alunos</div></div><div><div style="font-size:3.5rem;font-weight:800;color:#D4AF37;">5 ★</div><div style="color:#888;font-size:.95rem;margin-top:8px;">Avaliação Média</div></div></div></div></section><section style="background:#0d0d0f;padding:80px 20px;"><div style="max-width:1100px;margin:0 auto;text-align:center;"><h2 style="color:#fff;font-size:2.2rem;font-weight:800;margin-bottom:12px;">Por que nos <span style="color:#D4AF37;">escolher?</span></h2><p style="color:#888;margin-bottom:48px;">Tudo que você precisa para alcançar seus objetivos</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;text-align:left;"><div style="background:#111;border:1px solid #1a1a1e;border-radius:16px;padding:28px;"><div style="font-size:2rem;margin-bottom:14px;">⚡</div><h3 style="color:#fff;font-weight:700;margin-bottom:10px;">Resultados Rápidos</h3><p style="color:#888;font-size:.9rem;line-height:1.6;">Metodologia comprovada que entrega resultados em semanas.</p></div><div style="background:#111;border:1px solid #1a1a1e;border-radius:16px;padding:28px;"><div style="font-size:2rem;margin-bottom:14px;">🎯</div><h3 style="color:#fff;font-weight:700;margin-bottom:10px;">Suporte Dedicado</h3><p style="color:#888;font-size:.9rem;line-height:1.6;">Nossa equipe disponível 7 dias por semana para tirar dúvidas.</p></div><div style="background:#111;border:1px solid #1a1a1e;border-radius:16px;padding:28px;"><div style="font-size:2rem;margin-bottom:14px;">💎</div><h3 style="color:#fff;font-weight:700;margin-bottom:10px;">Conteúdo Premium</h3><p style="color:#888;font-size:.9rem;line-height:1.6;">Material de alta qualidade atualizado com as novidades do mercado.</p></div><div style="background:#111;border:1px solid #1a1a1e;border-radius:16px;padding:28px;"><div style="font-size:2rem;margin-bottom:14px;">🔐</div><h3 style="color:#fff;font-weight:700;margin-bottom:10px;">100% Seguro</h3><p style="color:#888;font-size:.9rem;line-height:1.6;">Plataforma criptografada com garantia de satisfação ou dinheiro de volta.</p></div></div></div></section><section style="background:#0a0a0c;padding:80px 20px;"><div style="max-width:1100px;margin:0 auto;"><div style="display:flex;flex-wrap:wrap;align-items:center;gap:40px;margin-bottom:60px;"><div style="flex:1;min-width:300px;"><img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&amp;q=80" style="width:100%;border-radius:16px;"></div><div style="flex:1;min-width:300px;"><h2 style="color:#fff;font-size:2rem;font-weight:800;margin-bottom:15px;">Foco no <span style="color:#D4AF37;">Crescimento</span></h2><p style="color:#aaa;line-height:1.7;">Descubra como otimizar seu tempo e alavancar resultados de maneira escalável. Nossa solução se adapta às suas necessidades e entrega performance pura.</p></div></div><div style="display:flex;flex-wrap:wrap;align-items:center;gap:40px;flex-direction:row-reverse;"><div style="flex:1;min-width:300px;"><img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&amp;q=80" style="width:100%;border-radius:16px;"></div><div style="flex:1;min-width:300px;"><h2 style="color:#fff;font-size:2rem;font-weight:800;margin-bottom:15px;">Segurança <span style="color:#D4AF37;">Total</span></h2><p style="color:#aaa;line-height:1.7;">Seus dados estão protegidos com o mais alto nível de criptografia. Não se preocupe com problemas técnicos, foque apenas em escalar o seu negócio.</p></div></div></div></section><section style="background:#050505;padding:80px 20px;"><div style="max-width:1100px;margin:0 auto;text-align:center;"><h2 style="color:#fff;font-size:2.2rem;font-weight:800;margin-bottom:40px;">Galeria de <span style="color:#D4AF37;">Projetos</span></h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:15px;"><img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=500&amp;q=80" style="width:100%;height:250px;object-fit:cover;border-radius:12px;transition:transform 0.3s;"><img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=500&amp;q=80" style="width:100%;height:250px;object-fit:cover;border-radius:12px;transition:transform 0.3s;"><img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=500&amp;q=80" style="width:100%;height:250px;object-fit:cover;border-radius:12px;transition:transform 0.3s;"><img src="https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=500&amp;q=80" style="width:100%;height:250px;object-fit:cover;border-radius:12px;transition:transform 0.3s;"></div></div></section><section style="background:#0a0a0c;padding:80px 20px;text-align:center;"><div style="max-width:900px;margin:0 auto;"><h2 style="color:#fff;font-size:2.2rem;font-weight:800;margin-bottom:12px;">Como <span style="color:#D4AF37;">funciona?</span></h2><p style="color:#888;margin-bottom:48px;">3 passos simples para começar</p><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;"><div style="background:#111;border:1px solid #1a1a1e;border-radius:16px;padding:36px 24px;position:relative;"><div style="position:absolute;top:-18px;left:50%;transform:translateX(-50%);background:#D4AF37;color:#000;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1rem;">1</div><div style="font-size:2.5rem;margin-bottom:16px;">📱</div><h3 style="color:#fff;font-weight:700;margin-bottom:10px;">Acesse</h3><p style="color:#888;font-size:.9rem;line-height:1.6;">Cadastre-se e acesse imediatamente todo o conteúdo.</p></div><div style="background:#111;border:1px solid #1a1a1e;border-radius:16px;padding:36px 24px;position:relative;"><div style="position:absolute;top:-18px;left:50%;transform:translateX(-50%);background:#D4AF37;color:#000;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1rem;">2</div><div style="font-size:2.5rem;margin-bottom:16px;">📚</div><h3 style="color:#fff;font-weight:700;margin-bottom:10px;">Aplique</h3><p style="color:#888;font-size:.9rem;line-height:1.6;">Siga o passo a passo e aplique as estratégias desde o dia 1.</p></div><div style="background:#111;border:1px solid #1a1a1e;border-radius:16px;padding:36px 24px;position:relative;"><div style="position:absolute;top:-18px;left:50%;transform:translateX(-50%);background:#D4AF37;color:#000;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1rem;">3</div><div style="font-size:2.5rem;margin-bottom:16px;">🚀</div><h3 style="color:#fff;font-weight:700;margin-bottom:10px;">Escale</h3><p style="color:#888;font-size:.9rem;line-height:1.6;">Veja seus resultados crescerem de forma consistente.</p></div></div></div></section><section style="background:#0a0a0c;padding:80px 20px;text-align:center;" class=""><div style="max-width:1000px;margin:0 auto;"><h2 style="color:#fff;font-size:2.5rem;font-weight:800;margin-bottom:40px;">Nossa <span style="color:#D4AF37;">Equipe</span></h2><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:30px;"><div style="background:#111;padding:30px;border-radius:16px;"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&amp;q=80" style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:15px;border:3px solid #D4AF37;"><h3 style="color:#fff;font-size:1.2rem;margin-bottom:5px;">Carlos Mendes</h3><p style="color:#D4AF37;font-size:0.9rem;">CEO &amp; Fundador</p></div><div style="background:#111;padding:30px;border-radius:16px;"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&amp;q=80" style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:15px;border:3px solid #D4AF37;"><h3 style="color:#fff;font-size:1.2rem;margin-bottom:5px;">Mariana Silva</h3><p style="color:#D4AF37;font-size:0.9rem;">Diretora de Marketing</p></div><div style="background:#111;padding:30px;border-radius:16px;"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=300&amp;q=80" style="width:120px;height:120px;border-radius:50%;object-fit:cover;margin-bottom:15px;border:3px solid #D4AF37;"><h3 style="color:#fff;font-size:1.2rem;margin-bottom:5px;">Ricardo Lima</h3><p style="color:#D4AF37;font-size:0.9rem;">Especialista Técnico</p></div></div></div></section><section style="background:#0d0d0f;padding:80px 20px;"><div style="max-width:800px;margin:0 auto;"><h2 style="color:#fff;font-size:2.2rem;font-weight:800;text-align:center;margin-bottom:48px;">Perguntas <span style="color:#D4AF37;">Frequentes</span></h2><div class="accordion" id="vyn-faq"><div class="accordion-item" style="background:#111;border:1px solid #1a1a1e;border-radius:12px;margin-bottom:10px;overflow:hidden;"><div class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq1" style="background:#111;color:#fff;font-weight:600;">Como funciona o acesso?</button></div><div id="faq1" class="accordion-collapse collapse" data-bs-parent="#vyn-faq"><div class="accordion-body" style="color:#888;">Após confirmação do pagamento, você recebe acesso imediato por e-mail. O acesso é 100% online.</div></div></div><div class="accordion-item" style="background:#111;border:1px solid #1a1a1e;border-radius:12px;margin-bottom:10px;overflow:hidden;"><div class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2" style="background:#111;color:#fff;font-weight:600;">Tem garantia de devolução?</button></div><div id="faq2" class="accordion-collapse collapse" data-bs-parent="#vyn-faq"><div class="accordion-body" style="color:#888;">Sim! 7 dias de garantia incondicional. Devolução de 100% do investimento se não ficar satisfeito.</div></div></div><div class="accordion-item" style="background:#111;border:1px solid #1a1a1e;border-radius:12px;overflow:hidden;"><div class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq3" style="background:#111;color:#fff;font-weight:600;">Para quem é indicado?</button></div><div id="faq3" class="accordion-collapse collapse" data-bs-parent="#vyn-faq"><div class="accordion-body" style="color:#888;">Para qualquer pessoa que queira melhorar resultados, seja iniciante ou avançado.</div></div></div></div></div></section><section style="background:#0a0a0c;padding:80px 20px;"><div style="max-width:1000px;margin:0 auto;display:grid;grid-template-columns:1fr 1.5fr;gap:64px;align-items:center;"><div style="text-align:center;"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&amp;q=80" alt="Autor" style="width:220px;height:220px;border-radius:50%;object-fit:cover;border:4px solid #D4AF37;"><div style="margin-top:16px;"><div style="color:#fff;font-weight:800;font-size:1.1rem;">João Silva</div><div style="color:#D4AF37;font-size:.85rem;margin-top:4px;">Especialista em Marketing</div></div></div><div><span style="color:#D4AF37;font-size:11px;font-weight:800;letter-spacing:2px;text-transform:uppercase;">SOBRE O CRIADOR</span><h2 style="color:#fff;font-size:2rem;font-weight:800;margin:12px 0 20px;line-height:1.2;">Quem está por trás deste método?</h2><p style="color:#aaa;line-height:1.7;margin-bottom:20px;">Com mais de 10 anos de experiência, já ajudou mais de 10.000 pessoas a transformarem suas vidas.</p><div style="margin-top:28px;display:flex;gap:24px;"><div><div style="font-size:1.8rem;font-weight:800;color:#D4AF37;">10k+</div><div style="color:#666;font-size:.85rem;">Alunos</div></div><div><div style="font-size:1.8rem;font-weight:800;color:#D4AF37;">10+</div><div style="color:#666;font-size:.85rem;">Anos exp.</div></div><div><div style="font-size:1.8rem;font-weight:800;color:#D4AF37;">5★</div><div style="color:#666;font-size:.85rem;">Avaliação</div></div></div></div></div></section><section style="background:linear-gradient(135deg,#0d0d0f,#1a1a1e);padding:80px 20px;text-align:center;"><div style="max-width:600px;margin:0 auto;"><h2 style="color:#fff;font-size:2rem;font-weight:800;margin-bottom:15px;">Fique por dentro das <span style="color:#D4AF37;">Novidades</span></h2><p style="color:#aaa;margin-bottom:30px;">Inscreva-se na nossa newsletter e receba conteúdos exclusivos e ofertas em primeira mão.</p><div style="display:flex;gap:10px;justify-content:center;flex-wrap:wrap;"><input type="email" placeholder="Seu melhor e-mail..." style="flex:1;min-width:250px;padding:15px;border-radius:8px;border:1px solid #333;background:#111;color:#fff;outline:none;"><a href="#" style="background:#D4AF37;color:#000;font-weight:800;padding:15px 30px;border-radius:8px;text-decoration:none;">INSCREVER-SE</a></div></div></section><footer style="background:#050507;padding:60px 20px 30px;border-top:1px solid #1a1a1e;" class=""><div style="max-width:1100px;margin:0 auto;"><div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:40px;"><div><div style="color:#D4AF37;font-size:1.3rem;font-weight:800;margin-bottom:16px;">MARCA</div><p style="color:#666;font-size:.9rem;line-height:1.7;max-width:280px;">Transformando vidas através de conhecimento e estratégias práticas.</p></div><div><div style="color:#fff;font-weight:700;margin-bottom:14px;">Links</div><div style="display:flex;flex-direction:column;gap:8px;"><a href="#" style="color:#666;text-decoration:none;font-size:.9rem;">Sobre nós</a><a href="#" style="color:#666;text-decoration:none;font-size:.9rem;">Contato</a><a href="#" style="color:#666;text-decoration:none;font-size:.9rem;">Afiliados</a></div></div><div><div style="color:#fff;font-weight:700;margin-bottom:14px;">Legal</div><div style="display:flex;flex-direction:column;gap:8px;"><a href="#" style="color:#666;text-decoration:none;font-size:.9rem;">Privacidade</a><a href="#" style="color:#666;text-decoration:none;font-size:.9rem;">Termos</a></div></div></div><div style="border-top:1px solid #111;padding-top:24px;text-align:center;color:#444;font-size:.8rem;">© 2026 Todos os direitos reservados.</div></div></footer><div id="vyn-wpp-float" style="position:fixed;bottom:24px;right:24px;z-index:9999;"><a href="https://api.whatsapp.com/send?phone=5544999234917&amp;text=Ol%C3%A1!" target="_blank" style="display:flex;align-items:center;justify-content:center;width:60px;height:60px;background:#25D366;border-radius:50%;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.4);" class=""><svg width="30" height="30" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"></path></svg></a></div><script id="vyn-live-script">
+
+            document.addEventListener("DOMContentLoaded", () => {
+
+                if(document.body.classList.contains('is-editor')) return;
+
+                
+
+                // 1. Observer de Animação
+
+                const obs = new IntersectionObserver((entries) => {
+
+                    entries.forEach(e => {
+
+                        if(e.isIntersecting) {
+
+                            const animClass = e.target.getAttribute('data-anim-class');
+
+                            if(animClass) {
+
+                                e.target.classList.add('animate__animated', animClass);
+
+                                e.target.style.visibility = 'visible';
+
+                            }
+
+                            obs.unobserve(e.target);
+
+                        }
+
+                    });
+
+                });
+
+
+
+                document.querySelectorAll('.animate__animated').forEach(el => {
+
+                    const animClass = Array.from(el.classList).find(c => c.startsWith('animate__') && c !== 'animate__animated');
+
+                    if(animClass) {
+
+                        el.setAttribute('data-anim-class', animClass);
+
+                        el.classList.remove('animate__animated', animClass);
+
+                        el.style.visibility = 'hidden';
+
+                        obs.observe(el);
+
+                    }
+
+                });
+
+
+
+                // 2. Fallback para links alternativos
+
+                document.querySelectorAll('[data-href]').forEach(el => {
+
+                    el.addEventListener('click', function(e) {
+
+                        e.preventDefault();
+
+                        const url = this.getAttribute('data-href');
+
+                        if(url.includes('http') || url.includes('whatsapp')) window.open(url, '_blank');
+
+                        else window.location.href = url;
+
+                    });
+
+                });
+
+            });
+
+        </script><footer style="background:#050507;padding:60px 20px 30px;border-top:1px solid #1a1a1e;"><div style="max-width:1100px;margin:0 auto;"><div style="display:grid;grid-template-columns:2fr 1fr 1fr;gap:48px;margin-bottom:40px;"><div><div style="color:#D4AF37;font-size:1.3rem;font-weight:800;margin-bottom:16px;">MARCA</div><p style="color:#666;font-size:.9rem;line-height:1.7;max-width:280px;">Transformando vidas através de conhecimento e estratégias práticas.</p></div><div><div style="color:#fff;font-weight:700;margin-bottom:14px;">Links</div><div style="display:flex;flex-direction:column;gap:8px;"><a href="#" style="color:#666;text-decoration:none;font-size:.9rem;">Sobre nós</a><a href="#" style="color:#666;text-decoration:none;font-size:.9rem;">Contato</a><a href="#" style="color:#666;text-decoration:none;font-size:.9rem;">Afiliados</a></div></div><div><div style="color:#fff;font-weight:700;margin-bottom:14px;">Legal</div><div style="display:flex;flex-direction:column;gap:8px;"><a href="#" style="color:#666;text-decoration:none;font-size:.9rem;">Privacidade</a><a href="#" style="color:#666;text-decoration:none;font-size:.9rem;">Termos</a></div></div></div><div style="border-top:1px solid #111;padding-top:24px;text-align:center;color:#444;font-size:.8rem;">© 2026 Todos os direitos reservados.</div></div></footer><section style="background:#0a0a0c;padding:60px 20px;text-align:center;" class=""><div style="max-width:1000px;margin:0 auto;"><h2 style="color:#fff;font-size:2.2rem;font-weight:800;margin-bottom:30px;">Como nos <span style="color:#D4AF37;" class="">Encontrar</span></h2><div style="border-radius:16px;overflow:hidden;border:2px solid rgba(212,175,55,.3);box-shadow:0 10px 30px rgba(0,0,0,0.5);height:400px;position:relative;"><iframe src="https://maps.google.com/maps?q=sao%20paulo&amp;z=10&amp;output=embed" width="100%" height="100%" style="border:0;position:absolute;top:0;left:0;" allowfullscreen="" loading="lazy" class=""></iframe></div></div></section></body></html>
